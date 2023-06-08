@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SSIS].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=(local);Initial Catalog=SSIS;Provider=SQLNCLI11.1;Integrated Security=SSPI;</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>

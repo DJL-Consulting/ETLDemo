@@ -1,0 +1,2088 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/29/2022 3:07:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XPS17"
+  DTS:CreatorName="XPS17\DJLCo"
+  DTS:DTSID="{40E5D695-3035-49E8-AAFA-6D292DE10424}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.694.0"
+  DTS:LocaleID="19465"
+  DTS:ObjectName="Web_Log_Load"
+  DTS:PackageType="5"
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{84ACD6D9-0795-45B7-B54A-3780CBDFB5AD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[B2B_Datamart]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1F986E09-40C4-4613-9683-72AB5C53553B}"
+      DTS:ObjectName="B2B_Datamart">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=B2B_Datamart;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Web_Log_Load-{EE3BACD0-F884-45EA-9D91-E38661D6E079}(local).B2B_Datamart;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSIS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0AF453B4-BB3D-4A4A-A023-A2B1260EBD23}"
+      DTS:ObjectName="SSIS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=XPS17;Initial Catalog=SSIS;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Web_Log]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{EC8B103C-FFB2-47FB-BC50-97FE3BCBACA4}"
+      DTS:ObjectName="Web_Log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Toptal\Project\Repo\ETL\Data\common.log">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IP_Address"
+              DTS:DTSID="{79C08206-B446-4B3E-9445-4397630F9709}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Identity"
+              DTS:DTSID="{3B927EB9-BF57-4CC3-8C9B-B8E4940B31B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Username"
+              DTS:DTSID="{0F0B2570-7894-482A-A1A8-2A9C86123022}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Request_Time"
+              DTS:DTSID="{6EF58BBC-2233-46A4-B43C-FE36FDE72F2C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Time_Zone_Offset"
+              DTS:DTSID="{801E9F2C-18D3-4C2D-BC58-E5E0CA6A92F6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HTTP_Request"
+              DTS:DTSID="{BC1479B4-FD61-44F7-A861-AA299C2A68AE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HTTP_Response_Code"
+              DTS:DTSID="{4B2606DB-B674-4B7C-B876-580C9B2E071B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HTTP_Response_Size"
+              DTS:DTSID="{36F098CC-5217-4244-B0C9-0032BE677DA0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0020_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Referer"
+              DTS:DTSID="{18348ABB-AF9B-492D-830A-D5F6CC387E06}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="User_Agent"
+              DTS:DTSID="{B4AAD876-4B40-441F-8C33-4DD7F52330CE}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="SSIS_Config"
+      DTS:ConfigurationType="5"
+      DTS:CreationName=""
+      DTS:DTSID="{3380F33D-4F1F-44AD-884D-81A70EB6118F}"
+      DTS:ObjectName="SSIS" />
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;SSIS&quot;;&quot;[dbo].[SSIS Configurations]&quot;;&quot;Web_Log&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{70BDFF08-3AB9-48C0-ABC9-8279DC9FB319}"
+      DTS:ObjectName="Web_Log" />
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;SSIS&quot;;&quot;[dbo].[SSIS Configurations]&quot;;&quot;B2B_Datamart&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{9ABD6D6F-D1A0-44FC-A28D-B8B2A186ED42}"
+      DTS:ObjectName="B2B_Datamart" />
+  </DTS:Configurations>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Staging Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D8DA62A3-004C-44E9-AB0D-CB9A2896D12E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Staging Table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F986E09-40C4-4613-9683-72AB5C53553B}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE etl.Web_Log&#xA;TRUNCATE TABLE etl.Web_Log_Errors" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Display Package Connections"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{EBC0824F-976E-4699-BCA8-A8906AC0B60A}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Display Package Connections"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_821b2dd93df841ce986fa1dcf709f6b2"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp">
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_821b2dd93df841ce986fa1dcf709f6b2.Properties.Settings.get_Default():ST_821b2dd93df841ce986fa1dcf709f6b2.Properties.Sett" +
+    "ings")]
+
+namespace ST_821b2dd93df841ce986fa1dcf709f6b2.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_821b2dd93df841ce986fa1dcf709f6b2.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5e12084a-edbe-4cff-a122-92b45f48de35}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_821b2dd93df841ce986fa1dcf709f6b2</RootNamespace>
+    <AssemblyName>ST_821b2dd93df841ce986fa1dcf709f6b2</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+#endregion
+
+namespace ST_821b2dd93df841ce986fa1dcf709f6b2
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+        /// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+        public void Main()
+        {
+            Boolean fireAgain = true;
+            foreach (ConnectionManager cm in Dts.Connections)
+            {
+                var wrk = cm.ConnectionString;
+                if (wrk.ToUpper().IndexOf("PASSWORD") > 0)
+                    wrk = wrk.Substring(0, wrk.ToUpper().IndexOf("PASSWORD"));  // trim off any passsword info
+                Dts.Events.FireInformation(-1, "Package Connections", cm.Name + " => " + wrk, string.Empty, 0, ref fireAgain);
+            }
+
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_821b2dd93df841ce986fa1dcf709f6b2</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_821b2dd93df841ce986fa1dcf709f6b2</msb:DisplayName>
+    <msb:ProjectId>{E792CFCA-2A96-4CDC-8948-A1D1AC21B4BD}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_821b2dd93df841ce986fa1dcf709f6b2.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_821b2dd93df841ce986fa1dcf709f6b2")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_821b2dd93df841ce986fa1dcf709f6b2")]
+[assembly: AssemblyCopyright("Copyright @  2022")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_821b2dd93df841ce986fa1dcf709f6b2.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_821b2dd93df841ce986fa1dcf709f6b2.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_821b2dd93df841ce986fa1dcf709f6b2.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_821b2dd93df841ce986fa1dcf709f6b2.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_821b2dd93df841ce986fa1dcf709f6b2.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_821b2dd93df841ce986fa1dcf709f6b2.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAD41D2MAAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAANi8A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAOQuAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAPA8AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAY
+LwAAAAAAAEgAAAACAAUAVCEAANgMAAABAAAAAAAAACwuAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBwCSAAAAAQAAERcKAigQAAAKbxEAAApvEgAACgsraAdv
+EwAACgwIbxQAAAoNCW8VAAAKcgEAAHBvFgAAChYxGAkWCW8VAAAKcgEAAHBvFgAACm8XAAAKDQIo
+EAAACm8YAAAKFXITAABwCG8ZAAAKcjsAAHAJKBoAAAp+GwAAChYSAG8cAAAKB28dAAAKLZACKBAA
+AAoWbx4AAAoqHgIoHwAACioeAiggAAAKKq5+AQAABC0eckUAAHDQAwAAAighAAAKbyIAAApzIwAA
+CoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKh4CKCQAAAoqLnMIAAAGgAMAAAQqQlNK
+QgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAADAQAACN+AAB4BAAABAYAACNTdHJpbmdz
+AAAAAHwKAAC4AAAAI1VTADQLAAAQAAAAI0dVSUQAAABECwAAlAEAACNCbG9iAAAAAAAAAAIAAAFX
+HaIBCQMAAAD6ATMAFgAAAQAAACEAAAAFAAAABgAAAAkAAAABAAAAJAAAAAIAAAAQAAAAAQAAAAIA
+AAADAAAABAAAAAEAAAAEAAAAAQAAAAEAAAAAAIkDAQAAAAAABgAlAr8EBgC0Ar8EBgBxAawEDwAz
+BQAABgCeAQ4EBgAIAg4EBgDpAQ4EBgCbAg4EBgBFAg4EBgBeAg4EBgC1AQ4EBgDQAeACCgB5AjgD
+CgDwADgDDgBuBJsADgBABJsABgC4A7EDBgBUAawEBgC6BbEDBgAwBN8EBgAgBPkDEgAkAXMDEgCF
+AXMDEgAMAeQDBgA5Ab8ECgBhAzgDDgB+BZsABgAIA7EDCgBaBDgDDgCDBJsABgC7ALEDBgBuALED
+BgD1BQ4EAAAAACUAAAAAAAEAAQABABAAyQMBADkAAQABAAAAEADmBEIFTQABAAMAAAEQAHEFQgVh
+AAMABwADAQAAmgUAAEUABAAKABEAvQOXABEA4ACbABEAXgCfAAYGTQCjAFaAigWmAFaAwACmAFAg
+AAAAAIYAzwMGAAEA7iAAAAAAhhifBAYAAQD2IAAAAACDGJ8EBgABAP4gAAAAAJMILASqAAEAKiEA
+AAAAkwjIAK8AAQAxIQAAAACTCNQAtAABADkhAAAAAJYIwQW6AAIAQCEAAAAAhhifBAYAAgBIIQAA
+AACRGKUEvwACAAAAAQDSAgkAnwQBABEAnwQGABkAnwQKACkAnwQQADEAnwQQADkAnwQQAEEAnwQQ
+AEkAnwQQAFEAnwQQAFkAnwQQAGEAnwQQAGkAnwQGAJEAnwQGALkAnwQVAMkAnwQGAHEAkgUkANEA
+egUpANkAkQQuAHkA3AUzAIEA+gI4AOEAUgQ4AOEA2AI8AOEADwNBANEAqAVHAIEAkgA4AOEAswVM
+AOEA/gVTAOkA1ANWAPEA6AVhANEAzQUBAHEAnwQGAJkAnwQGAPkAgABlAPkA8QVtAKEAnwRzAMEA
+nwQGAAgAFACNAAgAGACSACkAcwD6AC4ACwDSAC4AEwDbAC4AGwD6AC4AIwADAS4AKwAsAS4AMwAs
+AS4AOwAsAS4AQwADAS4ASwAyAS4AUwAsAS4AWwBJAUMAYwCSAEkAcwD6AGEAewCSAGMAawCSABsA
+AwABAAQAAwAAADAEwwAAAOgAyAAAAMUFzQACAAQAAwACAAUABQABAAYABQACAAcABwAEgAAAAQAA
+AFYgf2QAAAAAAAABAAAABAAAAAAAAAAAAAAAewBVAAAAAAAPAAAAAAAAAAAAAACEABkDAAAAAA8A
+AAAAAAAAAAAAAIQALgAAAAAABAAAAAAAAAAAAAAAewCxAwAAAAAAAAAAAQAAAPAEAAAFAAIAAAAA
+AABTVF84MjFiMmRkOTNkZjg0MWNlOTg2ZmExZGNmNzA5ZjZiMgA8TW9kdWxlPgBNaWNyb3NvZnQu
+U3FsU2VydmVyLk1hbmFnZWREVFMAdmFsdWVfXwBtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAUnVu
+dGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAZ2V0X05hbWUATWljcm9zb2Z0LlNxbFNl
+cnZlci5EdHMuUnVudGltZQBUeXBlAEZhaWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVz
+b3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRp
+bmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBE
+ZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJv
+d3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtB
+dHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0
+dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlv
+bnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0
+cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlB
+dHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAdmFsdWUASW5kZXhPZgBTeXN0
+ZW0uUnVudGltZS5WZXJzaW9uaW5nAGdldF9Db25uZWN0aW9uU3RyaW5nAFN1YnN0cmluZwBNaWNy
+b3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3Mu
+U2NyaXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfODIx
+YjJkZDkzZGY4NDFjZTk4NmZhMWRjZjcwOWY2YjIuZGxsAFN5c3RlbQBFbnVtAHJlc291cmNlTWFu
+AFNjcmlwdE1haW4ARmlyZUluZm9ybWF0aW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5H
+bG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEN1bHR1cmVJbmZvAGdldF9SZXNvdXJjZU1h
+bmFnZXIAQ29ubmVjdGlvbk1hbmFnZXIAVG9VcHBlcgBFdmVudHNPYmplY3RXcmFwcGVyAENvbm5l
+Y3Rpb25FbnVtZXJhdG9yAER0c0VudW1lcmF0b3IAR2V0RW51bWVyYXRvcgAuY3RvcgAuY2N0b3IA
+U3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVt
+LlJlc291cmNlcwBTVF84MjFiMmRkOTNkZjg0MWNlOTg2ZmExZGNmNzA5ZjZiMi5Qcm9wZXJ0aWVz
+LlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfODIxYjJkZDkzZGY4NDFjZTk4
+NmZhMWRjZjcwOWY2YjIuUHJvcGVydGllcwBTZXR0aW5ncwBnZXRfQ29ubmVjdGlvbnMAU3VjY2Vz
+cwBnZXRfRHRzAFNjcmlwdFJlc3VsdHMAZ2V0X0V2ZW50cwBDb25jYXQAT2JqZWN0AGdldF9EZWZh
+dWx0AHNldF9UYXNrUmVzdWx0AGdldF9DdXJyZW50AE1vdmVOZXh0AGdldF9Bc3NlbWJseQBFbXB0
+eQAAEVAAQQBTAFMAVwBPAFIARAAAJ1AAYQBjAGsAYQBnAGUAIABDAG8AbgBuAGUAYwB0AGkAbwBu
+AHMAAAkgAD0APgAgAABxUwBUAF8AOAAyADEAYgAyAGQAZAA5ADMAZABmADgANAAxAGMAZQA5ADgA
+NgBmAGEAMQBkAGMAZgA3ADAAOQBmADYAYgAyAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBz
+AG8AdQByAGMAZQBzAAAAtXtDD8zcJ0afobKMcdNwSgAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQER
+WQgHBAISPRJBDgQgABJpBCAAEm0EIAASPQQgABJBAyAADgQgAQgOBSACDggIBCAAEnUGAAMODg4O
+AgYOCiAGAQgODg4IEAIDIAACBwABEn0RgIEFIAASgIUHIAIBDhKAhQi3elxWGTTgiQiJhF3NgIDM
+kQQAAAAABAEAAAADBhJRAwYSVQMGEhACBggDBhEUBAAAElEEAAASVQUAAQESVQQAABIQAwAAAQQI
+ABJRBAgAElUECAASEAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQAC
+AAAAAAAoAQAjU1RfODIxYjJkZDkzZGY4NDFjZTk4NmZhMWRjZjcwOWY2YjIAAAUBAAAAABYBABFD
+b3B5cmlnaHQgQCAgMjAyMgAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFt
+ZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjcAtAAAAM7K774BAAAAkQAAAGxTeXN0
+ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBD
+dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJl
+c291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAAwvAAAAAAAA
+AAAAACYvAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYLwAAAAAAAAAAAAAAAF9Db3JEbGxNYWlu
+AG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAABoEAAAAAAAAAAAAABoENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQB/ZFYgAAABAH9kViA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsAR6AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABWAwAAAQAwADAA
+MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABh
+AG4AeQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A
+AAAAAFMAVABfADgAMgAxAGIAMgBkAGQAOQAzAGQAZgA4ADQAMQBjAGUAOQA4ADYAZgBhADEAZABj
+AGYANwAwADkAZgA2AGIAMgAAAD4ADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAA
+LgA4ADIANwA4AC4AMgA1ADcAMgA3AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAA
+AFMAVABfADgAMgAxAGIAMgBkAGQAOQAzAGQAZgA4ADQAMQBjAGUAOQA4ADYAZgBhADEAZABjAGYA
+NwAwADkAZgA2AGIAMgAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0
+AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMgAyAAAAKgABAAEATABlAGcAYQBsAFQA
+cgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBu
+AGEAbQBlAAAAUwBUAF8AOAAyADEAYgAyAGQAZAA5ADMAZABmADgANAAxAGMAZQA5ADgANgBmAGEA
+MQBkAGMAZgA3ADAAOQBmADYAYgAyAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBt
+AGUAAAAAAFMAVABfADgAMgAxAGIAMgBkAGQAOQAzAGQAZgA4ADQAMQBjAGUAOQA4ADYAZgBhADEA
+ZABjAGYANwAwADkAZgA2AGIAMgAAAEIADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAA
+ADEALgAwAC4AOAAyADcAOAAuADIANQA3ADIANwAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAA
+VgBlAHIAcwBpAG8AbgAAADEALgAwAC4AOAAyADcAOAAuADIANQA3ADIANwAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAAA4PwAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Run Load Proc"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{94555B0A-C314-4CF6-9884-F5B4BB015D86}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Run Load Proc"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F986E09-40C4-4613-9683-72AB5C53553B}"
+          SQLTask:SqlStatementSource="EXEC Load_Website_Traffic" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stage From Combined Log File"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5B81AB4C-7EF4-47AC-85B6-53D9923A72CA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stage From Combined Log File"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Stage From Combined Log File\Combined Log File"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Combined Log File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Stage From Combined Log File\Combined Log File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Web_Log]"
+                  connectionManagerRefId="Package.ConnectionManagers[Web_Log]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[IP_Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[IP_Address]"
+                      length="50"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[IP_Address]"
+                      name="IP_Address"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Identity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Identity]"
+                      length="50"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Identity]"
+                      name="Identity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Username]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Username]"
+                      length="100"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Username]"
+                      name="Username"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Request_Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Request_Time]"
+                      length="50"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Request_Time]"
+                      name="Request_Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Time_Zone_Offset]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Time_Zone_Offset]"
+                      length="50"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Time_Zone_Offset]"
+                      name="Time_Zone_Offset"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Request]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[HTTP_Request]"
+                      length="100"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Request]"
+                      name="HTTP_Request"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[HTTP_Response_Code]"
+                      length="50"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Code]"
+                      name="HTTP_Response_Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Size]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[HTTP_Response_Size]"
+                      length="50"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Size]"
+                      name="HTTP_Response_Size"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Referer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Referer]"
+                      length="50"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Referer]"
+                      name="Referer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[User_Agent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[User_Agent]"
+                      length="255"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[User_Agent]"
+                      name="User_Agent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[IP_Address]"
+                      dataType="wstr"
+                      length="50"
+                      name="IP_Address" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Identity]"
+                      dataType="wstr"
+                      length="50"
+                      name="Identity" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Username]"
+                      dataType="wstr"
+                      length="100"
+                      name="Username" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Request_Time]"
+                      dataType="wstr"
+                      length="50"
+                      name="Request_Time" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Time_Zone_Offset]"
+                      dataType="wstr"
+                      length="50"
+                      name="Time_Zone_Offset" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[HTTP_Request]"
+                      dataType="wstr"
+                      length="100"
+                      name="HTTP_Request" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[HTTP_Response_Code]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[HTTP_Response_Size]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Size" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[Referer]"
+                      dataType="wstr"
+                      length="50"
+                      name="Referer" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].ExternalColumns[User_Agent]"
+                      dataType="wstr"
+                      length="255"
+                      name="User_Agent" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Stage From Combined Log File\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[etl].[Web_Log_Errors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Stage From Combined Log File\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[B2B_Datamart]"
+                  connectionManagerRefId="Package.ConnectionManagers[B2B_Datamart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IP_Address]"
+                      dataType="wstr"
+                      length="50"
+                      name="IP_Address" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Identity]"
+                      dataType="wstr"
+                      length="50"
+                      name="Identity" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Username]"
+                      dataType="wstr"
+                      length="100"
+                      name="Username" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Request_Time]"
+                      dataType="wstr"
+                      length="50"
+                      name="Request_Time" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Time_Zone_Offset]"
+                      dataType="wstr"
+                      length="50"
+                      name="Time_Zone_Offset" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Request]"
+                      dataType="wstr"
+                      length="100"
+                      name="HTTP_Request" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Code]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Size]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Size" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Referer]"
+                      dataType="wstr"
+                      length="50"
+                      name="Referer" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User_Agent]"
+                      dataType="wstr"
+                      length="255"
+                      name="User_Agent" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Stage From Combined Log File\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Stage From Combined Log File\Web Log Errors"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Web Log Errors"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ETL].[Web_Log_Errors]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Stage From Combined Log File\Web Log Errors.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[B2B_Datamart]"
+                  connectionManagerRefId="Package.ConnectionManagers[B2B_Datamart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[IP_Address]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="IP_Address"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[IP_Address]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[IP_Address]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[Identity]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Identity"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Identity]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Identity]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[Username]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Username"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Username]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Username]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[Request_Time]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Request_Time"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Request_Time]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Request_Time]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[Time_Zone_Offset]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Time_Zone_Offset"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Time_Zone_Offset]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Time_Zone_Offset]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[HTTP_Request]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="HTTP_Request"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Request]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Request]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[HTTP_Response_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="HTTP_Response_Code"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Code]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Code]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[HTTP_Response_Size]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="HTTP_Response_Size"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Size]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Size]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[Referer]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Referer"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Referer]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Referer]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[User_Agent]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="User_Agent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[User_Agent]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[User_Agent]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[IP_Address]"
+                      dataType="wstr"
+                      length="50"
+                      name="IP_Address" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Identity]"
+                      dataType="wstr"
+                      length="50"
+                      name="Identity" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Username]"
+                      dataType="wstr"
+                      length="100"
+                      name="Username" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Request_Time]"
+                      dataType="wstr"
+                      length="50"
+                      name="Request_Time" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Time_Zone_Offset]"
+                      dataType="wstr"
+                      length="50"
+                      name="Time_Zone_Offset" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Request]"
+                      dataType="wstr"
+                      length="100"
+                      name="HTTP_Request" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Code]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Size]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Size" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[Referer]"
+                      dataType="wstr"
+                      length="50"
+                      name="Referer" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[User_Agent]"
+                      dataType="wstr"
+                      length="255"
+                      name="User_Agent" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Stage From Combined Log File\Web Log Errors.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\Web Log Errors.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Errors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\Web Log Errors.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Stage From Combined Log File\Web Log Staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Web Log Staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ETL].[Web_Log]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Stage From Combined Log File\Web Log Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[B2B_Datamart]"
+                  connectionManagerRefId="Package.ConnectionManagers[B2B_Datamart]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[IP_Address]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="IP_Address"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[IP_Address]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[IP_Address]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[Identity]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Identity"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Identity]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Identity]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[Username]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Username"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Username]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Username]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[Request_Time]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Request_Time"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Request_Time]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Request_Time]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[Time_Zone_Offset]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Time_Zone_Offset"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Time_Zone_Offset]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Time_Zone_Offset]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[HTTP_Request]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="HTTP_Request"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Request]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Request]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[HTTP_Response_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="HTTP_Response_Code"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Code]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Code]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[HTTP_Response_Size]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="HTTP_Response_Size"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Size]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[HTTP_Response_Size]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[Referer]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Referer"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Referer]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[Referer]" />
+                    <inputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].Columns[User_Agent]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="User_Agent"
+                      externalMetadataColumnId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[User_Agent]"
+                      lineageId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output].Columns[User_Agent]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[IP_Address]"
+                      dataType="wstr"
+                      length="50"
+                      name="IP_Address" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Identity]"
+                      dataType="wstr"
+                      length="50"
+                      name="Identity" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Username]"
+                      dataType="wstr"
+                      length="100"
+                      name="Username" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Request_Time]"
+                      dataType="wstr"
+                      length="50"
+                      name="Request_Time" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Time_Zone_Offset]"
+                      dataType="wstr"
+                      length="50"
+                      name="Time_Zone_Offset" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Request]"
+                      dataType="wstr"
+                      length="100"
+                      name="HTTP_Request" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Code]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Code" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[HTTP_Response_Size]"
+                      dataType="wstr"
+                      length="50"
+                      name="HTTP_Response_Size" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[Referer]"
+                      dataType="wstr"
+                      length="50"
+                      name="Referer" />
+                    <externalMetadataColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input].ExternalColumns[User_Agent]"
+                      dataType="wstr"
+                      length="255"
+                      name="User_Agent" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Stage From Combined Log File.Paths[Flat File Source Error Output]"
+              endId="Package\Stage From Combined Log File\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Error Output"
+              startId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Error Output]" />
+            <path
+              refId="Package\Stage From Combined Log File.Paths[Flat File Source Output]"
+              endId="Package\Stage From Combined Log File\Web Log Staging.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Stage From Combined Log File\Combined Log File.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Stage From Combined Log File.Paths[OLE DB Destination Error Output]"
+              endId="Package\Stage From Combined Log File\Web Log Errors.Inputs[OLE DB Destination Input]"
+              name="OLE DB Destination Error Output"
+              startId="Package\Stage From Combined Log File\Web Log Staging.Outputs[OLE DB Destination Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BBF115ED-87B3-48D8-8F39-9D524E68C421}"
+      DTS:From="Package\Display Package Connections"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Clear Staging Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{67A84CBF-FFF1-4EC5-9464-DCF10368F7E5}"
+      DTS:From="Package\Clear Staging Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Stage From Combined Log File" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{A6F4990E-1A23-40FB-8C21-6611B1ACD069}"
+      DTS:From="Package\Stage From Combined Log File"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Run Load Proc" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Clear Staging Table"
+          TopLeft="381,137" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Display Package Connections"
+          TopLeft="351.5,49.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Run Load Proc"
+          TopLeft="402.5,332.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Stage From Combined Log File"
+          TopLeft="357.5,235.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="466.5,91.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5"
+              Start="0,0"
+              End="0,38">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="467.75,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.5"
+              Start="0,0"
+              End="0,49">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="472.5,277.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Stage From Combined Log File">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Stage From Combined Log File\Web Log Errors"
+          TopLeft="521,247" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Stage From Combined Log File\Web Log Staging"
+          TopLeft="210,241" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Stage From Combined Log File\OLE DB Destination"
+          TopLeft="503,57" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Stage From Combined Log File\Combined Log File"
+          TopLeft="207,57" />
+        <EdgeLayout
+          Id="Package\Stage From Combined Log File.Paths[Flat File Source Error Output]"
+          TopLeft="373,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130,0"
+              Start="0,0"
+              End="122.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="122.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-2.37638671874999,5,127.2527734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Stage From Combined Log File.Paths[OLE DB Destination Error Output]"
+          TopLeft="369,265">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="152,0"
+              Start="0,0"
+              End="144.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="144.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.958906249999998,5,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Stage From Combined Log File.Paths[Flat File Source Output]"
+          TopLeft="289.75,99">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,142"
+              Start="0,0"
+              End="0,134.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,134.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Stage From Combined Log File\Web Log Errors">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Stage From Combined Log File\Web Log Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Stage From Combined Log File\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
